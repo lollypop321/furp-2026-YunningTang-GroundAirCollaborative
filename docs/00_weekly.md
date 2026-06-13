@@ -30,20 +30,27 @@
 
 <!-- =================  YOUR ENTRIES BELOW  ================= -->
 
-### Week 1 — YYYY-MM-DD
+### Week 1 — 2026-06-08
 
-**Attended this week's meeting:** Yes / No
+**Attended this week's meeting:** Yes
 
 **Progress this week**
 - Set up repository from the FURP template.
-- _..._
+- Read OR-Tools routing guides from the website
+- Complete the environment configuration
+- Pass the smoke test
+- Establish a baseline implementation
 
 **Challenges & blockers**
-- _..._
+- No major blockers encountered this week
 
 **Next steps**
-- _..._
+### Next steps
+- Finalize the dataset selection and prepare a small test instance for baseline implementation
+- Review the OR-Tools routing documentation to understand how to model basic VRP constraints
+- Start drafting the problem formulation and objective function for the baseline model
 
 **Hours spent (optional):**
 
 **Links (optional):**
+- OR-Tools website: https://developers.google.com/optimization/routing/vrp?hl=zh-cn
