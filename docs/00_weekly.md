@@ -46,9 +46,9 @@
 
 **Next steps**
 ### Next steps
-- Finalize the dataset selection and prepare a small test instance for baseline implementation
-- Review the OR-Tools routing documentation to understand how to model basic VRP constraints
-- Start drafting the problem formulation and objective function for the baseline model
+- Extend the smoke test script to a larger VRP instance to test solver scalability
+- Add basic vehicle capacity constraints to the model, following OR-Tools documentation examples
+- Implement and validate the baseline model with clear, reproducible output
 
 **Hours spent (optional):**
 
