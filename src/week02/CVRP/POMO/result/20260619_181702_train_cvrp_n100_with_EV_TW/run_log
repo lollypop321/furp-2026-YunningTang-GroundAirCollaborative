@@ -1,0 +1,23 @@
+[2026-06-19 17:17:03] train_n100_with_EV_TW.py(401) : DEBUG_MODE: True
+[2026-06-19 17:17:03] train_n100_with_EV_TW.py(402) : USE_CUDA: False, CUDA_DEVICE_NUM: 0
+[2026-06-19 17:17:03] train_n100_with_EV_TW.py(403) : env_params{'problem_size': 100, 'pomo_size': 100, 'use_energy_constraint': True, 'use_time_window_constraint': True, 'ev_params': {'battery_capacity': 100.0, 'energy_consumption_rate': 0.5, 'charging_speed': 1.0, 'max_charging_time': 0.5}}
+[2026-06-19 17:17:03] train_n100_with_EV_TW.py(403) : model_params{'embedding_dim': 128, 'sqrt_embedding_dim': 11.313708498984761, 'encoder_layer_num': 6, 'qkv_dim': 16, 'head_num': 8, 'logit_clipping': 10, 'ff_hidden_dim': 512, 'eval_type': 'argmax'}
+[2026-06-19 17:17:03] train_n100_with_EV_TW.py(403) : optimizer_params{'optimizer': {'lr': 0.0001, 'weight_decay': 1e-06}, 'scheduler': {'milestones': [8001, 8051], 'gamma': 0.1}}
+[2026-06-19 17:17:03] train_n100_with_EV_TW.py(403) : trainer_params{'use_cuda': False, 'cuda_device_num': 0, 'epochs': 2, 'train_episodes': 4, 'train_batch_size': 2, 'prev_model_path': None, 'logging': {'model_save_interval': 500, 'img_save_interval': 500, 'log_image_params_1': {'json_foldername': 'log_image_style', 'filename': 'style_cvrp_100.json'}, 'log_image_params_2': {'json_foldername': 'log_image_style', 'filename': 'style_loss_1.json'}}, 'model_load': {'enable': False}}
+[2026-06-19 17:17:03] train_n100_with_EV_TW.py(403) : logger_params{'log_file': {'desc': 'train_cvrp_n100_with_EV_TW', 'filename': 'run_log', 'filepath': './result/20260619_181702_train_cvrp_n100_with_EV_TW'}}
+[2026-06-19 17:17:04] CVRPTrainer.py(267) : =================================================================
+[2026-06-19 17:17:49] CVRPTrainer.py(379) : Epoch   1: Train   2/  4(50.0%)  Score: 20072.5312,  Loss: -13.5352,  TW_Vio: 1.0000,  E_Vio: 0.0000
+[2026-06-19 17:18:27] CVRPTrainer.py(379) : Epoch   1: Train   4/  4(100.0%)  Score: 20067.0430,  Loss: -8.3531,  TW_Vio: 1.0000,  E_Vio: 0.0000
+[2026-06-19 17:18:27] CVRPTrainer.py(388) : Epoch   1: Train (100%)  Score: 20067.0430,  Loss: -8.3531,  TW_Vio: 1.0000,  E_Vio: 0.0000
+[2026-06-19 17:18:27] CVRPTrainer.py(280) : Epoch   1/  2: Time Est.: Elapsed[1.38m], Remain[1.38m]
+[2026-06-19 17:18:27] CVRPTrainer.py(267) : =================================================================
+[2026-06-19 17:19:34] CVRPTrainer.py(388) : Epoch   2: Train (100%)  Score: 20043.3672,  Loss: -12.5505,  TW_Vio: 1.0000,  E_Vio: 0.0000
+[2026-06-19 17:19:34] CVRPTrainer.py(280) : Epoch   2/  2: Time Est.: Elapsed[2.50m], Remain[0.00m]
+[2026-06-19 17:19:34] CVRPTrainer.py(296) : Saving log_image
+[2026-06-19 17:19:34] CVRPTrainer.py(304) : Failed to save log image: [Errno 2] No such file or directory: '/Users/tangfiona/POMO/NEW_py_ver/utils/log_image_style/style_cvrp_100.json'
+[2026-06-19 17:19:34] CVRPTrainer.py(308) : Saving trained_model
+[2026-06-19 17:19:34] CVRPTrainer.py(333) : Failed to save log image: [Errno 2] No such file or directory: '/Users/tangfiona/POMO/NEW_py_ver/utils/log_image_style/style_cvrp_100.json'
+[2026-06-19 17:19:34] CVRPTrainer.py(336) :  *** Training Done *** 
+[2026-06-19 17:19:34] CVRPTrainer.py(337) : Now, printing log array...
+[2026-06-19 17:19:34] utils.py(236) : train_loss_list = [-8.353054761886597, -12.550460577011108]
+[2026-06-19 17:19:34] utils.py(236) : train_score_list = [20067.04296875, 20043.3671875]
