@@ -30,6 +30,42 @@
 
 <!-- =================  YOUR ENTRIES BELOW  ================= -->
 
+### Week 2 — 2026-06-15
+
+**Attended this week's meeting:** Yes
+
+**Progress this week**
+- implement E and TW constriant to the original POMO approach
+- implement E constraint to GA approach
+- recreate the OR-Tools method and add ALNS hybrid solution to it
+- run the 4 approaches with the same instances and compare the results
+
+**Challenges & blockers**
+
+1. **POMO**:
+- Challenge: Model architecture modification (input features 3D→6D, decoder context)
+- Solution: Extended encoder, added penalty annealing
+
+2. **GA**:
+- Challenge: Feasibility-preserving genetic operators
+- Solution: Hard constraint mask (conservative energy estimation)
+
+3. **OR-Tools**:
+- Challenge: EV energy constraint not natively supported
+- Solution: Approximated with capacity constraints (incomplete)
+
+4. **ALNS**:
+- Challenge: Balancing exploration vs. constraint satisfaction
+- Solution: Soft constraint tolerance (violation < 5.0)
+
+**Next steps**
+- _What will you do next week?_
+
+**Hours spent (optional):** 
+
+**Links (optional):** 
+
+
 ### Week 1 — 2026-06-08
 
 **Attended this week's meeting:** Yes
