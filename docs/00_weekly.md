@@ -101,7 +101,7 @@ The complete Pareto front contains 12 non-dominated solutions.
   - First 10 iterations: [521.69, 521.69, 521.69, 509.78, 509.78, 509.78, 509.78, 509.78, 509.78, 509.78]
   - Last 10 iterations: [496.64, 496.64, 496.64, 496.64, 496.64, 496.64, 496.64, 496.64, 496.64, 496.64]
 
-![25-Customer Results](/results/P-ACO_result_20260701_123820.png)
+![25-Customer Results](../src/week03/results/P-ACO_result_20260701_123820.png)
 
 ### 3.2 Medium-Scale Instance Results (50 Customers, 6 Trucks, 6 Drones)
 
@@ -140,7 +140,7 @@ The complete Pareto front contains 22 non-dominated solutions.
   - First 10 iterations: [1213.43, 1193.73, 1193.73, 1174.07, 1174.07, 1174.07, 1174.07, 1174.07, 1166.52, 1166.52]
   - Last 10 iterations: [1127.58, 1127.58, 1127.58, 1127.58, 1127.58, 1127.58, 1127.58, 1127.58, 1127.58, 1127.58]
 
-![50-Customer Results](/results/P-ACO_result_20260701_124511.png)
+![50-Customer Results](../src/week03/results/P-ACO_result_20260701_124511.png)
 
 ## 4. Discussion of Results
 
