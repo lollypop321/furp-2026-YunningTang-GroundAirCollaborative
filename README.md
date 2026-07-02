@@ -25,11 +25,11 @@ This is your project home for the FURP programme. **Fork this template**, rename
 
 | Field | Your entry |
 |---|---|
-| Student name(s) | _e.g. Jason Zhang_ |
-| Project title | _..._ |
-| Project tag | _e.g. ROSBootcamp_ |
+| Student name(s) | Yunning Tang |
+| Project title | Ground-Air Collaborative |
+| Project tag | GroundAirCollaborative |
 | Track | Research |
-| Supervising faculty | _..._ |
+| Supervising faculty | FOSE |
 | Project lead | _..._ |
 | Team or individual | _..._ |
 | Cited paper being replicated | _title + link/DOI_ |
