@@ -169,17 +169,17 @@ As the instance scale expands, the combined objective value grows non-linearly, 
 
 ### 4.4 Comparison with Paper Results
 
-| Parameter | Experimental Cost | Expected Cost (Paper) | Experimental Delay | Expected Delay (Paper) |
-|-----------|-------------------|----------------------|---------------------|------------------------|
-| n50-e0-v2 | 262.27 | 61.2 | 677.34 | 104.1 |
-| n50-e2-v2 | 320.63 | 73.8 | 672.85 | 50.1 |
-| n50-e4-v2 | 320.63 | 75.7 | 672.85 | 44.4 |
-| n50-e0-v4 | 280.38 | 71.8 | 729.92 | 106.3 |
-| n50-e2-v4 | 352.59 | 85.8 | 733.67 | 61.3 |
-| n50-e4-v4 | 352.59 | 89.1 | 733.67 | 58.0 |
-| n50-e0-v6 | 306.40 | 85.1 | 744.71 | 127.0 |
-| n50-e2-v6 | 375.22 | 100.4 | 744.26 | 79.2 |
-| n50-e4-v6 | 375.22 | 101.6 | 744.26 | 75.4 |
+| Instance | Experimental Cost | Expected Cost (Paper) | Experimental Delay | Expected Delay (Paper) | Experimental Runtime | 
+|-----------|-------------------|----------------------|---------------------|------------------------|---------------------|
+| n50-e0-v2 | 262.27 | 61.2 | 677.34 | 104.1 | 33.23 |
+| n50-e2-v2 | 320.63 | 73.8 | 672.85 | 50.1 | 33.35 |
+| n50-e4-v2 | 320.63 | 75.7 | 672.85 | 44.4 | 32.54 |
+| n50-e0-v4 | 280.38 | 71.8 | 729.92 | 106.3 | 23.6 |
+| n50-e2-v4 | 352.59 | 85.8 | 733.67 | 61.3 | 25.02 |
+| n50-e4-v4 | 352.59 | 89.1 | 733.67 | 58.0 | 25.9 |
+| n50-e0-v6 | 306.40 | 85.1 | 744.71 | 127.0 | 22.5 |
+| n50-e2-v6 | 375.22 | 100.4 | 744.26 | 79.2 | 23.19 |
+| n50-e4-v6 | 375.22 | 101.6 | 744.26 | 75.4 | 23.41 |
 
 The table above presents algorithm performance indicators under different drone endurance parameters for the 50-customer scale, compared with mean values from the CP-ACO reported in the literature. From the cost perspective, the literature shows a slight increase in total cost with increasing endurance, while our experimental cost values are generally higher across all groups, with no decreasing trend observed for e=2 and e=4 conditions. Regarding delay metrics, the literature demonstrates that improved endurance significantly reduces average customer delays, whereas our total delays remain nearly unchanged across the three endurance settings, indicating a lack of optimization effect.
 
