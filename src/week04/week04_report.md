@@ -196,3 +196,8 @@ Through two stages of progressive improvements, this study draws the following c
 
 5. **Reference Value**: Inspired by the MACO algorithm of Li et al. (2020), this work successfully transfers the Metropolis criterion from the UAV path planning domain to the truck-drone collaborative delivery scenario, extending the applicability of the method.
 
+---
+
+## References
+
+[1] B. Li, X. Qi, B. Yu, and L. Liu, "Trajectory Planning for UAV Based on Improved ACO Algorithm," *IEEE Access*, vol. 8, pp. 2995-3006, 2020.

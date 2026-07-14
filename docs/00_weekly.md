@@ -59,6 +59,7 @@
 **Links:**
 - [Code](/src/week04/new_P-ACO.py)
 - [Week04 report](/src/week04/week04_report.md)
+- Reference essay: Trajectory Planning for UAV Based on Improved ACO Algorithm (https://ieeexplore.ieee.org/document/8943975)
 
 
 ### Week 3 — 2026-06-22
