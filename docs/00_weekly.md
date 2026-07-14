@@ -30,6 +30,37 @@
 
 <!-- =================  YOUR ENTRIES BELOW  ================= -->
 
+### Week 4 — 2026-07-10
+
+**Attended this week's meeting:** No
+
+**Progress this week**
+- Implemented delay-prioritized drone assignment strategy: redesigned customer prioritization with dynamic urgency scoring based on remaining time before deadlines
+- Reformulated scoring function with 10:1 weight ratio favoring tardiness reduction over cost savings
+- Integrated Metropolis criterion into pheromone update phase with probabilistic acceptance of suboptimal solutions
+- Conducted extensive experiments across five endurance configurations (0, 2, 4, 6, 8)
+- Completed performance comparison between delay-prioritized and Metropolis-enhanced versions
+- Generated detailed experimental reports with performance tables
+
+**Challenges & blockers**
+- Metropolis integration shows inconsistent performance: improves at ENDURANCE=2 and 4, but worsens at ENDURANCE=0, 6, and 8 (up to +2.2% degradation)
+- Pareto front currently contains only a single point, indicating insufficient solution diversity
+- Temperature scheduling parameters (initial temperature=100.0, cooling_rate=0.98) may not be optimal across all configurations
+- Fixed pheromone update intensity (0.5×) and lack of acceptance threshold may be causing excessive noise in some configurations
+
+**Next steps**
+- Design adaptive temperature scheduling based on search progress and configuration
+- Implement threshold-based acceptance mechanism to filter poor suboptimal solutions
+- Develop dynamic pheromone update intensity based on solution quality
+- Extend Metropolis criterion to consider both cost and delay simultaneously
+- Increase Pareto front capacity (MAX_EAN) and introduce diversity metrics
+
+
+**Links:**
+- [Code](/src/week04/new_P-ACO.py)
+- [Week04 report](/src/week04/week04_report.md)
+
+
 ### Week 3 — 2026-06-22
 
 # Experimental Report on Truck-Drone Collaborative Delivery Problem
