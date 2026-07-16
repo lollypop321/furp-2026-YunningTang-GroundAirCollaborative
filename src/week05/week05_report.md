@@ -109,10 +109,10 @@ To prevent the Pareto archive from containing numerous "pseudo non-dominated sol
 | | Pareto Points | 1 | **8** | **↑ 7** |
 
 **P-ACO**:
-![Old result](/results/P-ACO_result_20260716_172815.png)
+![Old result](./results/P-ACO_result_20260716_172815.png)
 
 **P-ACO + PLS**:
-![New result](/results/P-ACO_PLS_result_20260716_172929.png)
+![New result](./results/P-ACO_PLS_result_20260716_172929.png)
 
 ### 4.2 Key Findings
 
