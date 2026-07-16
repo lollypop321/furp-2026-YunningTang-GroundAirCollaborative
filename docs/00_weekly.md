@@ -30,9 +30,36 @@
 
 <!-- =================  YOUR ENTRIES BELOW  ================= -->
 
+### Week 5 — 2026-07-16
+
+**Attended this week's meeting:** No meeting this week
+
+**Progress this week**
+- Implemented Pareto Local Search (PLS) based on HMOA paper into the P-ACO framework, adding five neighborhood operators (2-opt, Truck-to-Drone, Drone-to-Truck, Drone Reassign, Swap).
+- Added boundary solution protection and de-duplication mechanisms to the Pareto archive.
+- Conducted comparative experiments on 50-customer instances across four endurance levels (0, 2, 4, 6).
+- Results show objective value improvements of 2.8%–13.4% across all configurations; Pareto points increased from 1→8 (6x) at endurance=6 and 4→12 (3x) at endurance=4.
+- Found that the three extreme solutions (cost-min, delay-min, combined-min) now form distinct trade-off points, whereas before they were identical.
+
+**Challenges & blockers**
+- PLS optimization occasionally over-optimizes truck routes via 2-opt, reducing drone utilization.
+- Pareto archive sometimes shows 80 points visually but many are duplicates (resolved with de-duplication threshold).
+- Time windows remain relatively loose for 50 customers, so drone advantages are not fully exploited.
+
+**Next steps**
+- Run experiments on 100-customer and larger instances to test scalability and generalizability.
+- Adjust PLS execution order (try drone operators before 2-opt) to increase drone task allocation.
+- Test tighter time windows to create more urgency scenarios where drones provide clearer benefits.
+
+**Links:**
+- [Code](/src/week05/new_P-ACO_PLS.py)
+- [Week05 report](/src/week05/week05_report.md)
+- Reference essay: Hybrid Multi-Objective Optimization Approach With Pareto Local Search for Collaborative Truck-Drone Routing Problems Considering Flexible Time Windows(https://ieeexplore.ieee.org/document/9580555)
+
+
 ### Week 4 — 2026-07-10
 
-**Attended this week's meeting:** No
+**Attended this week's meeting:** Yes
 
 **Progress this week**
 - Implemented delay-prioritized drone assignment strategy: redesigned customer prioritization with dynamic urgency scoring based on remaining time before deadlines
