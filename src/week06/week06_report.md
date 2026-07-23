@@ -110,7 +110,7 @@ Output: Pareto Front (multiple non-dominated solutions)
 | 100 | original | 697.47 ± 64.95 | 514.61 | 182.86 | 5.2 | 201.14s |
 | 100 | **with_pls** | **670.40 ± 21.74** | **463.31** | 207.09 | **22.8** | 202.01s |
 
-![Endurance=6 Comparison Plots](./compare_results_e6/comparison_plots_20260723_153918.png)
+![Endurance=6 Comparison Plots](compare_results_e6/comparison_plots_20260723_153918.png)
 *Figure 1: Endurance=6 — Boxplot, improvement rate, error bar, and Pareto size comparison between original and PLS.*
 
 ### 4.2 Endurance=4 Results
@@ -124,7 +124,7 @@ Output: Pareto Front (multiple non-dominated solutions)
 | 100 | original | 716.43 ± 31.65 | 475.69 | 240.73 | 3.4 | 1035.85s |
 | 100 | **with_pls** | **657.92 ± 68.75** | **436.38** | 221.55 | **19.0** | 561.37s |
 
-![Endurance=4 Comparison Plots](./compare_results_e4/comparison_plots_20260723_181836.png)
+![Endurance=4 Comparison Plots](compare_results_e4/comparison_plots_20260723_181836.png)
 *Figure 2: Endurance=4 — Comparison plots between original and PLS.*
 
 
@@ -139,7 +139,7 @@ Output: Pareto Front (multiple non-dominated solutions)
 | 100 | original | 670.61 ± 51.86 | 448.48 | 222.12 | 5.0 | 205.43s |
 | 100 | **with_pls** | **602.72 ± 52.93** | **415.35** | 187.37 | **12.0** | 318.53s |
 
-![Endurance=2 Comparison Plots](./compare_results_e2/comparison_plots_20260723_190848.png)
+![Endurance=2 Comparison Plots](compare_results_e2/comparison_plots_20260723_190848.png)
 *Figure 3: Endurance=2 — Comparison plots between original and PLS.*
 
 ### 4.4 Feasibility Rate
