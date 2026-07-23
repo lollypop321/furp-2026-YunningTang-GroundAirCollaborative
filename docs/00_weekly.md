@@ -30,6 +30,40 @@
 
 <!-- =================  YOUR ENTRIES BELOW  ================= -->
 
+### Week 6 — 2026-07-23
+
+**Attended this week's meeting:** Yes
+
+**Progress this week**
+- **Integrated Pareto Local Search (PLS) into P-ACO framework**: Combined 5 neighborhood operators (2-opt, Truck-to-Drone, Drone-to-Truck, Drone Reassign, Swap) with the original P-ACO global search, forming a complete "construct → refine" workflow.
+- **Implemented evaluation pipeline**: Created batch experiment system (`run_all.py`) that automatically runs 45 instances (3 scales × 5 seeds × 3 endurance levels) and generates comparison reports.
+- **Conducted experiments across three endurance settings**:
+  - ENDURANCE=2: 10.1% improvement on 100 customers, Pareto points 5.0 → 12.0
+  - ENDURANCE=4: 8.2% improvement on 100 customers, Pareto points 3.4 → 19.0
+  - ENDURANCE=6: 3.9% improvement on 100 customers, Pareto points 5.2 → 22.8
+- **Analyzed results**: Found that PLS improves performance most when endurance is low (10.1% improvement at END=2) because it focuses on 2-opt truck route optimization; improvement is smaller at high endurance (3.9% at END=6) because P-ACO already leverages drones effectively.
+- **Documented findings**: Wrote comprehensive Week 6 integration note including method design, experiment plan, results tables, and analysis of drone endurance impact. Included four comparison plots showing boxplots, improvement rates, error bars, and Pareto size comparisons.
+- **Prepared final deliverables**: All results saved to `compare_results/` with CSV tables and visualization plots.
+
+**Challenges & blockers**
+- Initially had field name mismatch (`best_objective` vs `combined_objective`) between `run_all.py` and version files; fixed by standardizing return format in both `original_P-ACO.py` and `P-ACO_PLS.py`.
+- Pareto archive sometimes showed 80 points but many were duplicates; added deduplication mechanism with similarity threshold (0.5) to filter pseudo non-dominated solutions.
+- Endurance=2 results showed that PLS improves performance even when drones are almost unusable — this was counter-intuitive but explained by 2-opt truck path optimization.
+
+**Next steps**
+- Prepare final project report integrating all experimental results
+- Consider adaptive operator-selection experiment (logging which PLS operator works best under which conditions)
+- Explore different customer distributions (clustered vs. uniform) if time permits
+
+**Links:**
+- Code: 
+  - [run_all.py](/src/week06/run_all.py)
+  - [original_P-ACO.py](/src/week06/original_P-ACO.py)
+  - [P-ACO_PLS.py](/src/week06/P-ACO_PLS.py)
+  - [config.py](/src/week06/config.py)
+- [Week06 report](/src/week06/week06_report.md)
+
+
 ### Week 5 — 2026-07-16
 
 **Attended this week's meeting:** No meeting this week
