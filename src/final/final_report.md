@@ -424,7 +424,7 @@ This demonstrates the robustness of the P-ACO framework and the fact that PLS do
 | 4 | 716.43 | **657.92** | **8.2%** | 3.4 | **19.0** | **459%** |
 | 6 | 697.47 | **670.40** | **3.9%** | 5.2 | **22.8** | **338%** |
 
-![Endurance impact analysis](endurance_impact_analysis.png)
+![Endurance impact analysis](images/endurance_impact_analysis.png)
 
 *Figure 4: Impact of drone endurance on PLS performance (100-customer instances).*
 
@@ -538,7 +538,7 @@ This study successfully integrates Pareto Local Search into the P‑ACO framewor
 | **Chip** | Apple M1 |
 | **Memory** | 8 GB |
 | **Programming Language** | Python 3.11.15 |
-| **Key Libraries** | NumPy 1.24.3, Matplotlib 3.7.1 |
+| **Key Libraries** | NumPy 2.4.6, Matplotlib 3.11.0 |
 
 
 

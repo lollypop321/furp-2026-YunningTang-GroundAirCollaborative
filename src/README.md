@@ -1,17 +1,47 @@
-# `/src` — your work goes here
+# `/src` 
 
-Put all your code, scripts, notebooks, experiment configs, and project materials in this folder.
+# Hybrid P-ACO-PLS for TDRPTW
+Multi-objective hybrid algorithm combining Pareto Ant Colony Optimization and Pareto Local Search to solve Truck-Drone Routing Problem with Time Windows.
 
-**Research Track reminder:** your project should reproduce a cited paper and add **at least 10% innovation** (something new on top of the replication). Organise this folder however suits your project, but keep it tidy enough that a reviewer can follow what you did.
+## Overview
+This project proposes a two-stage framework:
+1. Parallel multi-mode P-ACO for global solution construction
+2. Periodic PLS with five neighborhood operators for local refinement
 
-Suggested (not mandatory) layout:
+Experiments on 45 test instances prove the hybrid method improves solution quality up to 10.1% and boosts Pareto diversity by 459%, with 100% feasibility rate.
 
+## Repository Structure
 ```
-/src
- ├── README.md          ← how to run your code / what's here
- ├── data/              ← datasets (or links if too large to commit)
- ├── experiments/       ← scripts, notebooks, configs
- └── results/           ← outputs, figures, logs
+src/
+├── final/                     # Core codes, results & full report
+│   ├── compare_results_e2/    # Plots and results for endurance=2
+│   ├── compare_results_e4/    # Plots and results for endurance=4
+│   ├── compare_results_e6/    # Plots and results for endurance=6
+│   ├── images/                # General project figures, charts & diagrams
+│   ├── results/               # Raw experimental outputs
+│   ├── config.py              # Global hyperparameters
+│   ├── final_report.md        # Full formal report
+│   ├── instance_generator.py  # Instance generation script
+│   ├── original_P-ACO.py      # Baseline algorithm
+│   ├── P-ACO_PLS.py           # Proposed hybrid algorithm
+│   └── run_all.py             # Batch run all tests
+└── week01 ~ week06/           # Weekly development records
 ```
 
-> Don't commit large datasets or secrets/credentials. Link to data sources instead.
+## Environment & Dependencies
+- Python 3.11.15
+- NumPy 2.4.6, Matplotlib 3.11.0
+
+## Full Report
+Complete theory, mathematical formulation, experimental results and discussion:
+[final/final_report.md](final/final_report.md)
+
+## Key Results
+- Objective improvement: 3.9% ~ 10.1% under different drone endurance limits
+- Pareto front size increased by up to 459%
+- 100% feasible solutions across all test cases
+- Up to 45.8% runtime reduction on large-scale instances
+
+## References
+1. Das D N et al. Synchronized Truck and Drone Routing[J]. IEEE TITS, 2021.
+2. Luo Q et al. Hybrid Multi-Objective Optimization with PLS for Truck-Drone Routing[J]. IEEE TITS, 2022.
