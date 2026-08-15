@@ -56,11 +56,13 @@ The TDRPTW can be stated as follows: given a depot and a set of customer points,
 
 **Objective:**
 
-$$\min f = (f_{\text{cost}}, f_{\text{delay}})$$
+$$
+\min f = (f_{\mathrm{cost}}, f_{\mathrm{delay}})
+$$
 
 where:
-- $f_{\text{cost}}$: total travel distance of trucks and drones
-- $f_{\text{delay}}$: sum of time‑window violations over all customers
+- $`f_{\mathrm{cost}}`$: total travel distance of trucks and drones
+- $`f_{\mathrm{delay}}`$: sum of time‑window violations over all customers
 
 **Constraints:**
 - Each customer is served exactly once by one vehicle
@@ -124,63 +126,78 @@ Each mode is assigned to exactly **20%** of ants, ensuring balanced exploration 
 
 At each construction step, the ant selects the truck with the earliest current time:
 
-$$t_{\text{selected}} = \arg\min_{i \in \text{trucks}} t_i$$
+$$
+t_{\mathrm{selected}} = \arg\min_{i \in \mathrm{trucks}} t_i
+$$
 
 The next customer is selected using a **pseudo-random proportional rule**:
 
 $$
-j = \begin{cases}
+j = 
+\begin{cases}
 \arg\max_{l \in N_i} \{ [\tau_{il}]^{\alpha} \cdot [\eta_{il}]^{\beta} \}, & \text{if } r \leq q_0 \\
-\text{roulette selection from } P_{ij}, & \text{otherwise}
+\mathrm{roulette selection from } P_{ij}, & \text{otherwise}
 \end{cases}
 $$
 
 where:
-- $r \sim U(0,1)$ is a random number
-- $q_0 = 0.5$ balances exploitation vs exploration
-- $N_i$ is the set of unvisited customers
-- $\tau_{il}$ is the pheromone concentration on edge $(i,l)$
-- $\eta_{il}$ is the hybrid heuristic value
+- $`r \sim U(0,1)`$ is a random number
+- $`q_0 = 0.5`$ balances exploitation vs exploration
+- $`N_i`$ is the set of unvisited customers
+- $`\tau_{il}`$ is the pheromone concentration on edge $`(i,l)`$
+- $`\eta_{il}`$ is the hybrid heuristic value
 
 **Hybrid heuristic:**
 
-$$\eta_{ij} = \frac{C}{d_{ij} \cdot (\text{penalty}_{ij} + \epsilon)}$$
+$$
+\eta_{ij} = \frac{C}{d_{ij} \cdot (\mathrm{penalty}_{ij} + \epsilon)}
+$$
 
-$$\text{penalty}_{ij} = \max(0, e_j - t_j^{\text{arrive}}) + \max(0, t_j^{\text{arrive}} - l_j)$$
+$$
+\mathrm{penalty}_{ij} = \max(0, e_j - t_j^{\mathrm{arrive}}) + \max(0, t_j^{\mathrm{arrive}} - l_j)
+$$
 
 where:
-- $C = 1000$ is a scaling constant
-- $d_{ij}$ is the Euclidean distance between nodes $i$ and $j$
-- $e_j$ and $l_j$ are the earliest and latest service times for customer $j$
-- $t_j^{\text{arrive}}$ is the estimated arrival time
+- $`C = 1000`$ is a scaling constant
+- $`d_{ij}`$ is the Euclidean distance between nodes $`i`$ and $`j`$
+- $`e_j`$ and $`l_j`$ are the earliest and latest service times for customer $`j`$
+- $`t_j^{\mathrm{arrive}}`$ is the estimated arrival time
 
 The state transition probability is:
 
-$$P_{ij} = \frac{[\tau_{ij}]^{\alpha} \cdot [\eta_{ij}]^{\beta}}{\sum_{l \in N_i} [\tau_{il}]^{\alpha} \cdot [\eta_{il}]^{\beta}}$$
+$$
+P_{ij} = \frac{[\tau_{ij}]^{\alpha} \cdot [\eta_{ij}]^{\beta}}{\sum_{l \in N_i} [\tau_{il}]^{\alpha} \cdot [\eta_{il}]^{\beta}}
+$$
 
-with $\alpha = 1$ and $\beta = 2$.
+with $`\alpha = 1`$ and $`\beta = 2`$.
 
 **Local pheromone update** (applied after each edge traversal):
 
-$$\tau_{ij} \leftarrow (1 - \xi) \cdot \tau_{ij} + \xi \cdot \tau_0$$
+$$
+\tau_{ij} \leftarrow (1 - \xi) \cdot \tau_{ij} + \xi \cdot \tau_0
+$$
 
-where $\xi = 0.1$ is the local decay rate and $\tau_0 = 10$ is the initial pheromone value.
+where $`\xi = 0.1`$ is the local decay rate and $`\tau_0 = 10`$ is the initial pheromone value.
 
 **Step 2: Drone assignment**
 
 After truck routes are constructed, a **score-based greedy insertion** assigns customers to drones:
 
-$$\text{Score}(c) = \Delta T_{\text{ard}}(c) \times w_{\text{delay}} + \Delta D_{\text{save}}(c) \times w_{\text{cost}} + \text{Bonus}(c)$$
+$$
+\mathrm{Score}(c) = \Delta T_{\mathrm{ard}}(c) \times w_{\mathrm{delay}} + \Delta D_{\mathrm{save}}(c) \times w_{\mathrm{cost}} + \mathrm{Bonus}(c)
+$$
 
 where:
-- $\Delta T_{\text{ard}}(c) = \text{truck\_late}(c) - \text{drone\_late}(c)$: tardiness improvement
-- $\Delta D_{\text{save}}(c) = d_{\text{truck}}(c) - d_{\text{drone}}(c)$: distance saving
-- $w_{\text{delay}}, w_{\text{cost}}$: personality mode weights
-- $\text{Bonus}(c) = 50 \times (w_{\text{delay}} / 10)$ if truck-late customer becomes drone-punctual
+- $`\Delta T_{\mathrm{ard}}(c) = \mathrm{truck\_late}(c) - \mathrm{drone\_late}(c)`$: tardiness improvement
+- $`\Delta D_{\mathrm{save}}(c) = d_{\mathrm{truck}}(c) - d_{\mathrm{drone}}(c)`$: distance saving
+- $`w_{\mathrm{delay}}, w_{\mathrm{cost}}`$: personality mode weights
+- $`\mathrm{Bonus}(c) = 50 \times (w_{\mathrm{delay}} / 10)`$ if truck-late customer becomes drone-punctual
 
-A drone task $(c, \text{launch}, \text{land})$ is feasible if:
+A drone task $`(c, \mathrm{launch}, \mathrm{land})`$ is feasible if:
 
-$$d(\text{launch}, c) + d(c, \text{land}) \leq \text{ENDURANCE}$$
+$$
+d(\mathrm{launch}, c) + d(c, \mathrm{land}) \leq \mathrm{ENDURANCE}
+$$
 
 and the task does not overlap with existing drone tasks for the same truck.
 
@@ -190,41 +207,53 @@ The archive maintains the set of non-dominated solutions found so far.
 
 **Pareto dominance:** Solution $a$ dominates solution $b$ ($a \prec b$) if:
 
-$$f_{\text{cost}}^a \leq f_{\text{cost}}^b \land f_{\text{delay}}^a \leq f_{\text{delay}}^b \land (f_{\text{cost}}^a < f_{\text{cost}}^b \lor f_{\text{delay}}^a < f_{\text{delay}}^b)$$
+$$
+f_{\mathrm{cost}}^a \leq f_{\mathrm{cost}}^b \land f_{\mathrm{delay}}^a \leq f_{\mathrm{delay}}^b \land (f_{\mathrm{cost}}^a < f_{\mathrm{cost}}^b \lor f_{\mathrm{delay}}^a < f_{\mathrm{delay}}^b)
+$$
 
 **Crowding distance:** For solutions sorted by each objective:
 
-$$D_i = \sum_{m \in \{\text{cost}, \text{delay}\}} \frac{f_m^{i+1} - f_m^{i-1}}{f_m^{\max} - f_m^{\min}}$$
+$$
+D_i = \sum_{m \in \{\mathrm{cost}, \mathrm{delay}\}} \frac{f_m^{i+1} - f_m^{i-1}}{f_m^{\max} - f_m^{\min}}
+$$
 
-Boundary solutions are assigned $D = \infty$ to ensure they are never removed.
+Boundary solutions are assigned $`D = \infty`$ to ensure they are never removed.
 
-**Deduplication:** Solutions with Euclidean distance $< 0.5$ in objective space are considered duplicates and removed.
+**Deduplication:** Solutions with Euclidean distance $`< 0.5`$ in objective space are considered duplicates and removed.
 
-**Archive size control:** When archive size exceeds $MAX\_EAN = 80$, solutions with the smallest crowding distance are removed.
+**Archive size control:** When archive size exceeds $`MAX\_EAN = 80`$, solutions with the smallest crowding distance are removed.
 
 #### 3.2.4 Pheromone Update
 
 **Evaporation:**
 
-$$\tau_{ij} \leftarrow (1 - \rho) \cdot \tau_{ij}$$
+$$
+\tau_{ij} \leftarrow (1 - \rho) \cdot \tau_{ij}
+$$
 
-where $\rho = 0.15$ is the global evaporation rate.
+where $`\rho = 0.15`$ is the global evaporation rate.
 
 **Deposition:** The best feasible solution deposits pheromone:
 
-$$\Delta \tau_{ij} = \frac{Q_c}{f_{\text{cost}} + \epsilon} + \frac{Q_t}{f_{\text{delay}} + \epsilon}$$
+$$
+\Delta \tau_{ij} = \frac{Q_c}{f_{\mathrm{cost}} + \epsilon} + \frac{Q_t}{f_{\mathrm{delay}} + \epsilon}
+$$
 
-where $Q_c = 120$, $Q_t = 60$, and $\epsilon = 10^{-6}$.
+where $`Q_c = 120`$, $`Q_t = 60`$, and $`\epsilon = 10^{-6}`$.
 
 **Pareto-assisted deposition:** The top 5 Pareto solutions deposit pheromone with 30% of the best solution's intensity, weighted by rank:
 
-$$\Delta \tau_{ij}^{\text{pareto}} = 0.3 \cdot \left(1 - 0.15 \cdot \text{rank}\right) \cdot \Delta \tau_{ij}^{\text{best}}$$
+$$
+\Delta \tau_{ij}^{\mathrm{pareto}} = 0.3 \cdot \left(1 - 0.15 \cdot \mathrm{rank}\right) \cdot \Delta \tau_{ij}^{\mathrm{best}}
+$$
 
 **Pheromone clipping:**
 
-$$\tau_{\min} \leq \tau_{ij} \leq \tau_{\max}$$
+$$
+\tau_{\min} \leq \tau_{ij} \leq \tau_{\max}
+$$
 
-with $\tau_{\min} = 1$ and $\tau_{\max} = 20$, preventing premature convergence.
+with $`\tau_{\min} = 1`$ and $`\tau_{\max} = 20`$, preventing premature convergence.
 
 ### 3.3 Pareto Local Search (PLS)
 
@@ -234,15 +263,17 @@ PLS is the core innovation of this study, inspired by the hybrid optimization ap
 
 | Operator | Function | Time Complexity | Applicability |
 |----------|----------|-----------------|---------------|
-| **2-opt (enhanced)** | Reverse segments of truck routes to reduce travel distance | $O(n^2 \cdot \text{max\_iter})$ | Always useful for truck route optimisation |
-| **Truck-to-Drone** | Reassign expensive truck customers to drones | $O(k \cdot m)$ | When endurance is sufficient |
-| **Drone-to-Truck** | Move expensive drone customers back to trucks | $O(m)$ | When endurance is tight |
-| **Swap** | Exchange one truck and one drone customer | $O(k \cdot m)$ | Explore truck-drone boundary |
-| **Drone Reassign** | Delete and re-allocate the most expensive drone task | $O(m^2)$ | When drone configuration is suboptimal |
+| **2-opt (enhanced)** | Reverse segments of truck routes to reduce travel distance | $`O(n^2 \cdot \mathrm{max\_iter})`$ | Always useful for truck route optimisation |
+| **Truck-to-Drone** | Reassign expensive truck customers to drones | $`O(k \cdot m)`$ | When endurance is sufficient |
+| **Drone-to-Truck** | `Move expensive drone customers back to trucks | $`O(m)`$ | When endurance is tight |
+| **Swap** | Exchange one truck and one drone customer | $`O(k \cdot m)`$ | Explore truck-drone boundary |
+| **Drone Reassign** | Delete and re-allocate the most expensive drone task | $`O(m^2)`$ | When drone configuration is suboptimal |
 
 **Enhanced 2-opt:** The operator iteratively applies 2-opt reversals until no improvement is found or a maximum of 20 iterations is reached. A reversal is accepted if:
 
-$$d(i-1,i) + d(j,j+1) > d(i-1,j) + d(i,j+1)$$
+$$
+d(i-1,i) + d(j,j+1) > d(i-1,j) + d(i,j+1)
+$$
 
 #### 3.3.2 PLS Execution Flow
 
@@ -284,7 +315,7 @@ A solution is considered feasible if all of the following conditions hold:
 
 1. **Complete coverage**: Every customer is served exactly once (truck ∪ drone = all customers, truck ∩ drone = ∅)
 2. **Time-window satisfaction**: All truck and drone arrivals respect customer time windows
-3. **Endurance constraint**: Every drone flight satisfies $d_{\text{launch}} + d_{\text{land}} \leq \text{ENDURANCE}$
+3. **Endurance constraint**: Every drone flight satisfies $`d_{\mathrm{launch}} + d_{\mathrm{land}} \leq \mathrm{ENDURANCE}`$
 4. **Non-overlapping drone tasks**: For each truck, drone tasks are scheduled sequentially
 5. **Temporal feasibility**: Drone return time ≤ truck arrival time at the retrieval point
 
@@ -359,7 +390,7 @@ The only difference between the two variants is the PLS module, ensuring a clean
 | 100 | Original | 697.47 ± 64.95 | 514.61 | 182.86 | 5.2 | 201.14s |
 | 100 | **+PLS** | **670.40 ± 21.74** | **463.31** | 207.09 | **22.8** | 202.01s |
 
-![Endurance=6 Comparison Plots](./compare_results_e6/comparison_plots_20260723_153918.png)
+![Endurance=6 Comparison Plots](compare_results_e6/comparison_plots_20260814_145815.png)
 *Figure 1: Endurance=6 — Boxplot, improvement rate, error bar, and Pareto size comparison between original and PLS.*
 
 **Analysis:**
@@ -379,7 +410,7 @@ The only difference between the two variants is the PLS module, ensuring a clean
 | 100 | Original | 716.43 ± 31.65 | 475.69 | 240.73 | 3.4 | 1035.85s |
 | 100 | **+PLS** | **657.92 ± 68.75** | **436.38** | 221.55 | **19.0** | 561.37s |
 
-![Endurance=4 Comparison Plots](./compare_results_e4/comparison_plots_20260723_181836.png)
+![Endurance=4 Comparison Plots](compare_results_e4/comparison_plots_20260814_134226.png)
 *Figure 2: Endurance=4 — Comparison plots between original and PLS.*
 
 **Analysis:**
@@ -398,7 +429,7 @@ The only difference between the two variants is the PLS module, ensuring a clean
 | 100 | Original | 670.61 ± 51.86 | 448.48 | 222.12 | 5.0 | 205.43s |
 | 100 | **+PLS** | **602.72 ± 52.93** | **415.35** | 187.37 | **12.0** | 318.53s |
 
-![Endurance=2 Comparison Plots](./compare_results_e2/comparison_plots_20260723_190848.png)
+![Endurance=2 Comparison Plots](compare_results_e2/comparison_plots_20260814_125211.png)
 *Figure 3: Endurance=2 — Comparison plots between original and PLS.*
 
 **Analysis:**

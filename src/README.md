@@ -43,5 +43,6 @@ Complete theory, mathematical formulation, experimental results and discussion:
 - Up to 45.8% runtime reduction on large-scale instances
 
 ## References
-1. Das D N et al. Synchronized Truck and Drone Routing[J]. IEEE TITS, 2021.
-2. Luo Q et al. Hybrid Multi-Objective Optimization with PLS for Truck-Drone Routing[J]. IEEE TITS, 2022.
+
+1. D. N. Das, R. Sewani, J. Wang and M. K. Tiwari, "Synchronized Truck and Drone Routing in Package Delivery Logistics," in IEEE Transactions on Intelligent Transportation Systems, vol. 22, no. 9, pp. 5772-5782, Sept. 2021.
+2. Q. Luo, G. Wu, B. Ji, L. Wang and P. N. Suganthan, "Hybrid Multi-Objective Optimization Approach With Pareto Local Search for Collaborative Truck-Drone Routing Problems Considering Flexible Time Windows," in IEEE Transactions on Intelligent Transportation Systems, vol. 23, no. 8, pp. 13011-13025, Aug. 2022.
